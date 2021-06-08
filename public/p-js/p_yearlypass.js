@@ -4,10 +4,18 @@ const auth = firebase.auth();
 
 const form_HTML = document.querySelector('#form');
 const idfile_HTML = document.querySelector('#idproof');
-const picfile_HTML = document.querySelector('#photo');
-const signfile_HTML = document.querySelector('#sign');
 
-let FILE1,FILE2,FILE3;
+function id_dis(input) {
+  if (input.files[0].size > 2097152) {
+    alert("File is too big!! Upload between[2kb - 2Mb]!");
+    input.value = "";
+  } else if (input.files[0].size < 20000) {
+    alert("File is too small!! Upload between[2kb - 2Mb]");
+    input.value = "";
+  }
+}
+
+let FILE1;
 
 let USER = {};
 auth.onAuthStateChanged(async (user) => {
@@ -21,8 +29,8 @@ function formSubmit(event) {
      
     const org_name = document.querySelector('#org_name').value;
     var cls = document.getElementsByName("cls");
-    var gen = document.getElementsByName("gender");
-    const id = document.querySelector('#id_no').value;
+    
+    //const id = document.querySelector('#id_no').value;
     const source = document.querySelector('#source').value;
     const dest = document.querySelector('#dest').value;
     const change = document.querySelector('#change').value;
@@ -34,22 +42,13 @@ function formSubmit(event) {
             break;
         }
     }
-
-    //gender
-    for (var j = 0; j < gen.length; j++){
-        if (gen[i].checked){
-            var genn = gen[i].value;
-            break;
-        }
-    }
-
-    console.log(org_name,clss,genn,id,source, dest,change);
+    console.log(org_name,clss,source, dest,change);
 
     let data = {
       org_name: org_name || '',
       clss:clss || '',
-      genn:genn || '',
-      id: `BMTC_${Math.round(Math.random() * (9999 - 1111)) + 1111}`,
+     
+     // id: `BMTC_${Math.round(Math.random() * (9999 - 1111)) + 1111}`,
       source:source || '',
       dest:dest || '',
       change:change || ''      
@@ -84,19 +83,5 @@ function fileupload1(e) {
     FILE1 = e.target.files[0];
     console.log(FILE1);
   }
-
-  function fileupload2(e) {
-    console.log(e.target.files[0]);
-    FILE2 = e.target.files[0];
-    console.log(FILE2);
-  }
-
-  function fileupload3(e) {
-    console.log(e.target.files[0]);
-    FILE3 = e.target.files[0];
-    console.log(FILE3);
-  }
   
 idfile_HTML.addEventListener('change', fileupload1)
-picfile_HTML.addEventListener('change', fileupload2)
-signfile_HTML.addEventListener('change', fileupload3)

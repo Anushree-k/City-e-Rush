@@ -95,11 +95,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="modal-body">
 				<div class="agileits-w3layouts-info">
 					<div class="cnd_form1">
-
+						<!--
 						<div class="form-group">
 					        <label for="inputEmail4">Enter ID :</label>
 					        <input type="email" class="form-control" id="inputEmail4" placeholder="">
 					    </div>
+						-->
+
 					    <h4>Payable Amount : Rs. 1050</h4><br>
   
  						<button type="submit" class="btn btn-primary">Confirm & Pay</button></div>
@@ -111,32 +113,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 	<!--Form -->
-<form>
+<form id="form">
     <div class="cnd_form">
 
-    <div class="form-row">
-    	<h4 style="font-weight: bold; font-size: 35px">Apply for New Monthly Pass</h4>
-    	<br>
-        
-        <div class="custom-file form-group">
-	        <label class="custom-file-label" for="customFile">Attach Photograph</label>
-	        <input type="file" class="custom-file-input" id="photo">
-        </div>
-
-        <div class="custom-file form-group">
-	        <label class="custom-file-label" for="customFile">Attach ID Proof</label>
-	        <input type="file" class="custom-file-input" id="idproof">
-        </div>
-
-        <div class="custom-file form-group">
-	        <label class="custom-file-label" for="customFile">Attach Signature</label>
-	        <input type="file" class="custom-file-input" id="sign">
-        </div>
-
-        <h3>Payable Amount : Rs. 1050</h3><br>
+    <h3>Payable Amount : Rs. 1050</h3><br>
       
-      <button type="submit" class="btn btn-primary">Confirm & Pay</button>
+    <button type="submit" class="btn btn-primary">Confirm & Pay</button>
 
 
     </div>
-  </form
+</form>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+<script>
+	var firebaseConfig = {
+	  apiKey: "AIzaSyCx35-u190UD35eVm1ZLEL4u9b3xugegSw",
+	  authDomain: "e-rush-f34c2.firebaseapp.com",
+	  projectId: "e-rush-f34c2",
+	  storageBucket: "e-rush-f34c2.appspot.com",
+	  messagingSenderId: "477721234621",
+	  appId: "1:477721234621:web:97b2ca517a23cd8a4a7bd4",
+	  measurementId: "G-V4YXQF3ZVD"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+  </script>
+  <script src="p-js/p_monthlypass.js" ></script>
+</body>
+</html>
