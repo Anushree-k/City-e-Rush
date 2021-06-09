@@ -21,8 +21,36 @@ let USER = {};
 auth.onAuthStateChanged(async (user) => {
   if (user) {
     USER.uid = user.uid;
+
+    await extractData();
+    displayData();
   }
 });
+
+//extract name and email from passengers db
+async function extractData() {
+  await db
+    .collection("passengers")
+    .doc(USER.uid)
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      USER.data = docData;
+    });
+}
+
+let fname, lname, email;
+
+function displayData() {
+
+  fname = USER.data.fname;
+  lname = USER.data.lname;
+  email = USER.data.email;
+
+  console.log(fname, lname, email)
+}
+// end of extracting name and email
+
 
 function formSubmit(event) {
     event.preventDefault();
@@ -47,11 +75,12 @@ function formSubmit(event) {
     let data = {
       org_name: org_name || '',
       clss:clss || '',
-     
-     // id: `BMTC_${Math.round(Math.random() * (9999 - 1111)) + 1111}`,
+      // id: `BMTC_${Math.round(Math.random() * (9999 - 1111)) + 1111}`,
       source:source || '',
       dest:dest || '',
-      change:change || ''      
+      change:change || '',
+      user : fname+" "+lname,
+      email : email       
     }
 
     db.collection('P_YearlyPass').doc(USER.uid).set(data).then(

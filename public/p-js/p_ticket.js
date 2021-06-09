@@ -1,7 +1,43 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
 
+const auth = firebase.auth();
+
 const form_HTML = document.querySelector('#ticket');
+
+let USER = {};
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    USER.uid = user.uid;
+
+    await extractData();
+    displayData();
+  }
+});
+
+//extract name and email from passengers db
+async function extractData() {
+  await db
+    .collection("passengers")
+    .doc(USER.uid)
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      USER.data = docData;
+    });
+}
+
+let fname, lname, email;
+
+function displayData() {
+
+  fname = USER.data.fname;
+  lname = USER.data.lname;
+  email = USER.data.email;
+
+  console.log(fname, lname, email)
+}
+// end of extracting name and email
 
 function formSubmit(event) {
     event.preventDefault();
@@ -20,14 +56,17 @@ function formSubmit(event) {
       child:child,
       source:source,
       dest:dest,
-      cost:"def later"    
+      cost:"def later",
+      user : fname+" "+lname,
+      email : email     
     }
-
-    db.collection('P_Ticket').add(data).then(
-        function(d) {
+    console.log(data)
+    
+    db.collection('P_Ticket').doc(USER.uid).set(data).then(
+        /* function(d) {
           console.log(d);
           console.log(d.id);
-        }
+        } */
       ).catch(
         function(error) {
           console.log(error);
