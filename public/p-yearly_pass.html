@@ -131,6 +131,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="cnd_form">
 		<h4 style="font-weight: bold; font-size: 35px">Apply for New Yearly Pass</h4><br>
 
+		<!-- if pass is already brought -->
+		<div class="form-group">
+			<label>Enter Route Number</label>
+		</div>
+
+		<div class="form-group">
+				<select id="routeNum" style="width: 100%;">
+				<!-- <option disabled selected value="Select Route Number"> Select Route Number</option> -->
+			</select>
+		</div>
+
+		<button class="btn btn-primary">OK</button>
+
+		<!-- if pass is not brought brought -->
+
 		<div class="form-group">
 			<label >Institution</label>
 			<input type="text" class="form-control" id="org_name" placeholder="Organization name">
@@ -192,6 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	firebase.analytics();
   </script>
   <script src="p-js/p_yearlypass.js" ></script>
+  <script src="./p-js/p-PSGR_index.js"></script>
 
 </body>
 

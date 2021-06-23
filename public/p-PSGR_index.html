@@ -213,35 +213,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="email" class="form-control" id="inputEmail4" placeholder="">
 					</div>
 						-->
+					<div class="form-group">
+						<label>Enter Route Number</label>
+					</div>
+					<div class="form-group">
+						<select id="routeNum" style="width: 100%;">
+							<!-- <option disabled selected value="Select Route Number"> Select Route Number</option> -->
+						</select>
+					</div>
+	
 
 					<div class="form-group">
 						<label>Normal Tickets</label>
-						<input type="text" class="form-control" id="tnor" value="1" maxlength="2" placeholder="No. of adults" >
+						<input type="number" min=1 max=10 class="form-control" id="tnor" value="1" maxlength="2" placeholder="No. of adults" >
 					</div>
 
 					<div class="form-group">
 						<label>Specify Age Group : (if any)</label><br>
 						
 						<label for="snr">Senior Citizen</label> 
-						<input type="text" class="form-control" id="tsnrno" value="0" placeholder="No. of senior citizezns? ">
+						<input type="number" min=0 max=10  class="form-control" id="tsnrno" value="0" placeholder="No. of senior citizezns? ">
 						
 						<label for="child">Children</label>
-						<input type="text" class="form-control" id="tchildno" value="0" placeholder="No. of Children? ">
+						<input type="number" min=0 max=10 class="form-control" id="tchildno" value="0" placeholder="No. of Children? ">
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputEmail4">Source</label>
-							<input type="text" class="form-control" id="tsource" placeholder="Source Stop">
+							<!-- <label for="inputEmail4">Source</label>
+							<input type="text" class="form-control" id="tsource" placeholder="Source Stop"> -->
+							<p>Source</p>
+							<select id="source_place" style="width: 100%;">
+								<option disabled selected value="Select Route Number"> First choose your route</option>
+							</select>
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="inputPassword4">Destination</label>
-							<input type="text" class="form-control" id="tdest" placeholder="Dest Stop">
+							<!-- <label for="inputPassword4">Destination</label>
+							<input type="text" class="form-control" id="tdest" placeholder="Dest Stop"> -->
+							<p>Destination</p>
+							<select id="destination_place" style="width: 100%;">
+								<option disabled selected value="Select Route Number">First choose your route</option>
+							</select>
 						</div>
 					</div>  
 
-					<h3>Payable Amount : Rs. 20</h3><br>
+					<button id="fare" class="btn btn-primary">Calculate Fare</button>
+
+					<h3 id="amount">Payable Amount : Rs. 20</h3><br>
 
 					<button type="submit" class="btn btn-primary">Confirm & Pay</button></div>
 				</div>
@@ -266,6 +285,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="agileits-w3layouts-info">
 
 					<div class="cnd_form1">
+
+						<div class="form-group">
+							<label>Enter Route Number</label>
+						</div>
+			
+						<div class="form-group">
+								<select id="routeNum1" style="width: 100%;">
+								<!-- <option disabled selected value="Select Route Number"> Select Route Number</option> -->
+							</select>
+						</div>
+
+						<button class="btn btn-primary">OK</button>
+
 						<div class="form-group">
 							<label>Normal Passes </label>
 							<input type="text" class="form-control" value="1" id="dnor">
@@ -452,7 +484,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script src="p-js/p_ticket.js" ></script>
 <script src="p-js/p_dailypass.js" ></script>
-
-
+<script src="./p-js/p-PSGR_index.js"></script>
 </body>	
 </html>

@@ -41,16 +41,18 @@ function displayData() {
 
 function formSubmit(event) {
     event.preventDefault();
-     
+
+    const route = document.querySelector('#routeNum').value;
     const adult = document.querySelector('#tnor').value;
     const snr = document.querySelector('#tsnrno').value;
     const child = document.querySelector('#tchildno').value;
-    const source = document.querySelector('#tsource').value;
-    const dest = document.querySelector('#tdest').value;
+    const source = document.querySelector('#source_place').value;
+    const dest = document.querySelector('#destination_place').value;
     
-    console.log(adult,snr,child,source, dest);
+    console.log(route,adult,snr,child,source, dest);
 
     let data = {
+      route:route,
       adult: adult,
       snr:snr,
       child:child,
@@ -61,7 +63,9 @@ function formSubmit(event) {
       email : email     
     }
     console.log(data)
-    
+
+    console.log("routes:"+ROUTES);
+        
     db.collection('P_Ticket').doc(USER.uid).set(data).then(
         /* function(d) {
           console.log(d);
